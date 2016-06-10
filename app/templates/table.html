@@ -36,8 +36,7 @@
                     </div>
       </form>
        </div>
-       <!--
-      <div class="widget-toolbar pull-right"><a class="widget-toolbar-icon gohan_delete_selected" disabled ><i class="fa fa-trash"></i></a></div>-->
+      <div class="widget-toolbar pull-right"><a class="widget-toolbar-icon gohan_delete_selected" disabled ><i class="fa fa-trash"></i></a></div>
       <div class="widget-toolbar pull-right"><a class="widget-toolbar-icon gohan_create" data-gohan="create" ><i class="fa fa-plus"></i></a></div>
     </div>
   </div>
@@ -47,6 +46,9 @@
   <table class="table table-striped gohan-table">
     <thead>
       <tr>
+       <th class="selector_col">
+         <input id="all_selector" class="selector_checkbox" type="checkbox" value=""/>
+       </th>
        <% schema.schema.propertiesOrder.forEach( function(key){
            var property = schema.schema.properties[key];
            var view = property['view']
@@ -73,6 +75,9 @@
     <tbody id="page<%= key + 1 %>" >
       <% _.each(data, function(d){ %>
       <tr>
+        <td class="selector_col">
+          <input class="row_selector" type="checkbox" value="<%= d.id %>"/>
+        </td>
         <% schema.schema.propertiesOrder.forEach( function(key){
           var property = schema.schema.properties[key];
           var view = property['view']
