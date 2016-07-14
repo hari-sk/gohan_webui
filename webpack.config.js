@@ -1,5 +1,5 @@
-var port = 8080;
-var hostname = 'localhost';
+var port = 9050;
+var hostname = 'nodea2.englab.juniper.net';
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
