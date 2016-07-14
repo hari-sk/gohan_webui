@@ -52,8 +52,10 @@ export default class LoginView extends View {
    * @param {Event} event
    */
   login(event) {
-    event.preventDefault();
-    event.currentTarget.disabled = true;
+    if(event != null) {
+        event.preventDefault();
+        event.currentTarget.disabled = true;
+    }
 
     const id = this.$('#id').val();
     const password = this.$('#password').val();
