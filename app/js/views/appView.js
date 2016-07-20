@@ -1,4 +1,4 @@
-/* global $ */
+/* global $ window */
 import {View, Collection, history} from 'backbone';
 
 import UserModel from './../models/userModel';
@@ -57,6 +57,8 @@ export default class AppView extends View {
       this.schemas.fetch().then(() => {
         this.buildUi();
       }, error => {
+        this.userModel.unsetAuthData();
+        window.location.reload();
         this.errorView.render(...error);
       });
     } else {
