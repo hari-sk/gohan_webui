@@ -234,8 +234,13 @@ export default class AppView extends View {
     const loginView = new this.LoginClass({
       model: this.userModel
     });
-
-    this.$el.html(loginView.render().el);
+    if(sessionStorage.getItem("gohan_contrail") == "true") {
+        //No need to pass-on credentials,as session is already authenticated [Embedded in contrailUI]
+        loginView.login();
+        return this;
+    } else {
+        this.$el.html(loginView.render().el);
+    }
   }
 
   /**
