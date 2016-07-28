@@ -236,7 +236,7 @@ export default class AppView extends View {
     });
     if(sessionStorage.getItem("gohan_contrail") == "true") {
         //No need to pass-on credentials,as session is already authenticated [Embedded in contrailUI]
-        loginView.login();
+        this.userModel.loginTenant(sessionStorage.getItem('tenant'));
         return this;
     } else {
         this.$el.html(loginView.render().el);
@@ -253,7 +253,8 @@ export default class AppView extends View {
       this.showLogin();
     } else {
       this.$el.html(this.template());
-      this.$('#header').append(this.headerView.render().el);
+      if(this.userModel.getItem("gohan_contrail") != true)
+        this.$('#header').append(this.headerView.render().el);
       this.$('#sidebar').append(this.sidebarView.render().el);
       this.$('#bread-crumb').append(this.breadCrumb.render().el);
     }
