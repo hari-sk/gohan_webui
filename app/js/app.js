@@ -33,6 +33,16 @@ config.fetch().then(() => {
       }}
   });
 
+    if(sessionStorage.getItem("gohan_contrail") == "true") {
+        $.ajaxSetup({
+            statusCode: {
+                307: function () {
+                    window.parent.location.reload();
+                }
+            }
+        });
+    }
+
   router.route('', 'toppage', () => {
     router.navigate('v1.0/tenant/networks');
   });
